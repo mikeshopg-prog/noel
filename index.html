@@ -68,7 +68,7 @@ function card(html) { document.getElementById("card").innerHTML = html; }
 function esc(s) { return s.replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c])); }
 
 async function show() {
-  const t = decodeURIComponent(location.hash.slice(1)).trim().toLowerCase();
+  const t = decodeURIComponent((location.hash.slice(1) || location.search.slice(1)).replace(/^t=/, "")).trim().toLowerCase();
   if (!t) {
     card(`<h1>Ouvre ton lien perso</h1><p class="muted">Pour découvrir à qui tu offres ton cadeau, ouvre le lien personnel que tu as reçu par mail.</p>`);
     return;
